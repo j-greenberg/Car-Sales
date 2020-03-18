@@ -6,6 +6,9 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 const App = () => {
+
+  const new = "";
+
   const state = {
     additionalPrice: 0,
     car: {
