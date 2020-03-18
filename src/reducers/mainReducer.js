@@ -21,9 +21,22 @@ export const mainReducer = (state = initialState, action) => {
  
     switch(action.type){
         case 'ADD_FEATURE':
-            return state;
+            if(state.car.features.includes(action.payload)){
+                return state;
+            }    else{
+                return {...state, additionalPrice: state.additionalPrice + action.payload.price, 
+                    car:{
+                    ...state.car, features:[
+                        ...state.car.features, action.payload
+                ]
+                }};
+            }
         case 'REMOVE_FEATURE':
-            return state;
+            return {...state, additionalPrice: state.additionalPrice - action.payload.price,
+                 car:{
+                ...state.car, features:
+                    state.car.features.filter( (object) => object.id !== action.payload.id ), 
+            }};
         default: 
             return state;
     }  
